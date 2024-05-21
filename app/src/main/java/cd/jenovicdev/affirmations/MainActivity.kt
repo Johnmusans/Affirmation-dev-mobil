@@ -24,7 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cd.jenovicdev.affirmations.data.DataSource
-//import cd.jenovicdev.affirmations.model.Affirmation
+import cd.jenovicdev.affirmations.model.Affirmation
 import cd.jenovicdev.affirmations.ui.theme.AffirmationsTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,9 +37,54 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    AffirmationsApp()
 
                 }
             }
         }
     }
+}
+@Composable
+fun AffirmationsApp() {
+    AffirmationList(
+        affirmationList = DataSource().loadAffirmations(),
+    )
+}
+
+@Composable
+fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
+    Card(modifier = modifier) {
+        Column {
+            Image(
+                painter = painterResource(affirmation.imageResourceId),
+                contentDescription = stringResource(affirmation.stringResourceId),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(194.dp),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = LocalContext.current.getString(affirmation.stringResourceId),
+                modifier = Modifier.padding(16.dp),
+                style = MaterialTheme.typography.headlineSmall
+            )
+        }
+    }
+}
+@Composable
+fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
+    LazyColumn(modifier = modifier) {
+        items(affirmationList) { affirmation ->
+            AffirmationCard(
+                affirmation = affirmation,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun AffirmationCardPreview() {
+    AffirmationCard(Affirmation(R.string.affirmation1, R.drawable.image1))
 }
