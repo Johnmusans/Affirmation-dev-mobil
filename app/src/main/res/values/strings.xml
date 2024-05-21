@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Affirmations</string>
-
+    <string name="affirmation1">Je suis plein de gratitude chaque jour.</string>
+    <string name="affirmation2">Je choisis la joie et l\'optimisme.</string>
+    <string name="affirmation3">Je me sens fort et confiant.</string>
+    <string name="affirmation4">Je mérite l\'amour et le respect.</string>
+    <string name="affirmation5">Je suis capable de surmonter tous les obstacles.</string>
+    <string name="affirmation6">Je suis en paix avec moi-même.</string>
+    <string name="affirmation7">Je suis une personne précieuse et unique.</string>
+    <string name="affirmation8">Je suis entouré de positivité et d\'amour.</string>
+    <string name="affirmation9">Je suis en contrôle de ma vie et de mes émotions.</string>
+    <string name="affirmation10">Je suis reconnaissant pour chaque nouvelle journée.</string>
 </resources>
